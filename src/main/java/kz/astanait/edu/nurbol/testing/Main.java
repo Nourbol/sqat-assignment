@@ -1,4 +1,4 @@
-package by.astanait.edu.kz.nurbol.testing;
+package kz.astanait.edu.nurbol.testing;
 
 public class Main {
     public static void main(String[] args) {

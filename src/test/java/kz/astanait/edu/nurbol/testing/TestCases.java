@@ -1,9 +1,5 @@
-package by.astanait.edu.kz.nurbol.testing;
+package kz.astanait.edu.nurbol.testing;
 
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -12,6 +8,10 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Test;
 
 import java.time.Duration;
 
@@ -21,14 +21,14 @@ public class TestCases {
 
     private WebDriver driver;
 
-    @BeforeEach
+    @BeforeClass
     void setUp() {
         this.driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
     }
 
-    @AfterEach
+    @AfterClass
     void tearDown() {
         driver.quit();
     }
@@ -49,7 +49,7 @@ public class TestCases {
                 .until(visibilityOfElementLocated(searchResultsHeadingSelector))
                 .getText();
 
-        Assertions.assertTrue(actualResult.startsWith(expectedResultStart));
+        Assert.assertTrue(actualResult.startsWith(expectedResultStart));
     }
 
     @Test
@@ -77,7 +77,7 @@ public class TestCases {
         String actualFlashMessage = wait.until(visibilityOfElementLocated(By.cssSelector("#flash")))
                 .getText();
 
-        Assertions.assertTrue(actualFlashMessage.contains(expectedMessage));
+        Assert.assertTrue(actualFlashMessage.contains(expectedMessage));
     }
 
     @Test
@@ -112,6 +112,6 @@ public class TestCases {
                 .click(driver.findElement(By.cssSelector("input[value=\"Purchase Flight\"]")))
                 .perform();
 
-        Assertions.assertEquals("BlazeDemo Confirmation", driver.getTitle());
+        Assert.assertEquals("BlazeDemo Confirmation", driver.getTitle());
     }
 }

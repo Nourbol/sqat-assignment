@@ -1,0 +1,14 @@
+<suite name="Login" parallel="tests">
+
+    <test name="SuccessfulLogin">
+        <classes>
+            <class name="kz.astanait.edu.nurbol.testing.login.SuccessfulLoginTestCase" />
+        </classes>
+    </test>
+
+    <test name="UnsuccessfulLogin">
+        <classes>
+            <class name="kz.astanait.edu.nurbol.testing.login.UnsuccessfulLoginTestCase" />
+        </classes>
+    </test>
+</suite>
